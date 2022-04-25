@@ -64,15 +64,33 @@ class _WebFlutterState extends State<WebFlutter> {
       debugShowCheckedModeBanner: false,
       title: 'Consumo Webservice',
       home: Scaffold(
-          appBar: AppBar(
-            title: Text('Photos API'),
-          ),
-          body: futureBuilder),
+        appBar: AppBar(
+          backgroundColor: Color.fromARGB(237, 28, 4, 245),
+          title: Text('Welcome to TheCocktailDB'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.shopping_bag_outlined),
+              onPressed: () {},
+            ),
+          ],
+        ),
+        body: futureBuilder,
+      ),
     );
   }
 
   List<Widget> _listadoPhoto(data) {
-    List<Widget> photo = [];
+    List<Widget> photo = [
+      TextFormField(
+        decoration: InputDecoration(
+            iconColor: Color.fromARGB(255, 75, 3, 104),
+            icon: Icon(Icons.search),
+            labelText: "Busqueda",
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            )),
+      )
+    ];
     for (var itempk in data) {
       photo.add(Card(
         elevation: 2.0,
@@ -83,8 +101,8 @@ class _WebFlutterState extends State<WebFlutter> {
             //Text(itempk.strDrink),
             Container(
               padding: EdgeInsets.all(2.0),
-              height: 200,
-              width: 200,
+              height: 250,
+              width: 250,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(
@@ -93,7 +111,10 @@ class _WebFlutterState extends State<WebFlutter> {
                   fit: BoxFit.cover,
                 ),
               ),
-              child: Text(itempk.strDrink),
+              child: Text(
+                itempk.strDrink,
+                style: TextStyle(color: Colors.white),
+              ),
             )
           ],
         ),
